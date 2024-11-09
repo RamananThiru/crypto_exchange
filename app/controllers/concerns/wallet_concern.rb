@@ -41,7 +41,6 @@ module WalletConcern
     render json: { status: 'success', msg: 'successfully fetched funds', payload: user.get_all_wallets_payload }, status: :ok
 
   rescue StandardError => e
-    debugger
     render json: { success: 'failure', message: 'Unable to get your wallets information'}, status: :unprocessable_entity
   end
   
