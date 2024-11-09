@@ -12,4 +12,10 @@ Rails.application.routes.draw do
 
   # Defines the root path route ("/")
   # root "posts#index"
+
+  resources :users do
+    collection do
+      post '/signup', to: 'user#signup'
+    end
+  end
 end
