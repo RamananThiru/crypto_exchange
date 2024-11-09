@@ -23,6 +23,8 @@ Rails.application.routes.draw do
   resources :wallets do
     collection do
       post 'deposit', to: 'wallet#deposit'
+      post 'withdrawal', to: 'wallet#withdrawal'
+      get 'balances', to: 'wallet#balances'
     end
   end   
 end
