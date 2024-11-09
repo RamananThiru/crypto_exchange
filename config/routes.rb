@@ -16,6 +16,7 @@ Rails.application.routes.draw do
   resources :users do
     collection do
       post '/signup', to: 'user#signup'
+      post '/login', to: 'user#login'
     end
   end
 end

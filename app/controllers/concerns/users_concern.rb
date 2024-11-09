@@ -10,6 +10,15 @@ module UsersConcern
       render json: { status: 'failure', message: 'Unable to save user' }, status: :unprocessable_entity
   end
 
+  def user_login(user_params)
+    user = User.find_by(email: user_params[:email])
+    if user.blank? || !user.valid_password?(user_params[:password])
+      return render json: { status: 'failure', message: 'Unauthorized' }
+    end  
+
+    render json: { status: 'success', message: 'login successful'}
+  end
+
 
   def build_user_sucess_response
     { 
