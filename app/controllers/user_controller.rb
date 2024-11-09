@@ -1,5 +1,5 @@
 class UserController < ApiController
-  include UsersConcern
+  include UserConcern
   # TODO: API authentication was not part of the requirement document
 
   before_action :validate_account_credentials_params, only: [:signup, :login]

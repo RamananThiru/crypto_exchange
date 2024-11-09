@@ -1,4 +1,4 @@
-module UsersConcern
+module UserConcern
   extend ActiveSupport::Concern
 
   def create_user(user_params)
@@ -6,8 +6,10 @@ module UsersConcern
 
     return render json: build_user_sucess_response, status: :ok if @user.save!
       
-    rescue StandardError => e
-      render json: { status: 'failure', message: 'Unable to save user' }, status: :unprocessable_entity
+  rescue StandardError => e
+    # Skip logging sensitive details like email/password
+    Rails.logger.info("User Signup error: #{e.message}")
+    render json: { status: 'failure', message: 'Unable to save user' }, status: :unprocessable_entity
   end
 
   def user_login(user_params)

@@ -12,7 +12,7 @@
 
 ActiveRecord::Schema[7.2].define(version: 2024_11_09_133225) do
   create_table "currencies", force: :cascade do |t|
-    t.string "type", null: false
+    t.string "currency_type", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

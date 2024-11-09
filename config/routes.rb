@@ -19,4 +19,10 @@ Rails.application.routes.draw do
       post '/login', to: 'user#login'
     end
   end
+
+  resources :wallets do
+    collection do
+      post 'deposit', to: 'wallet#deposit'
+    end
+  end   
 end
