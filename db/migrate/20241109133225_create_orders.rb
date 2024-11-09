@@ -7,6 +7,7 @@ class CreateOrders < ActiveRecord::Migration[7.2]
       t.float :price
       t.float :volume
       t.integer :status
+      t.references :user, null: false, foreign_key: true  # Add this line for user_id
 
       t.timestamps
     end

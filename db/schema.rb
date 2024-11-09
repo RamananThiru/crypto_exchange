@@ -24,10 +24,12 @@ ActiveRecord::Schema[7.2].define(version: 2024_11_09_133225) do
     t.float "price"
     t.float "volume"
     t.integer "status"
+    t.integer "user_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["base_currency_id"], name: "index_orders_on_base_currency_id"
     t.index ["quote_currency_id"], name: "index_orders_on_quote_currency_id"
+    t.index ["user_id"], name: "index_orders_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -54,6 +56,7 @@ ActiveRecord::Schema[7.2].define(version: 2024_11_09_133225) do
 
   add_foreign_key "orders", "currencies", column: "base_currency_id"
   add_foreign_key "orders", "currencies", column: "quote_currency_id"
+  add_foreign_key "orders", "users"
   add_foreign_key "wallets", "currencies"
   add_foreign_key "wallets", "users"
 end

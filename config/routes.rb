@@ -26,5 +26,8 @@ Rails.application.routes.draw do
       post 'withdrawal', to: 'wallet#withdrawal'
       get 'balances', to: 'wallet#balances'
     end
-  end   
+  end
+
+  post 'order/create', to: 'order#create'
+  put 'order/cancel', to: 'order#cancel'
 end
